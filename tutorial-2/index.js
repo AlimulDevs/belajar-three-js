@@ -1,4 +1,4 @@
-import * as THREE from "three/build/three.module.js"
+import * as THREE from "../node_modules/three/build/three.module.js"
 
 var scene = new THREE.Scene();
 var cam = new THREE.PerspectiveCamera(45, innerWidth / innerHeight, 1, 100);
@@ -8,10 +8,15 @@ var cam = new THREE.PerspectiveCamera(45, innerWidth / innerHeight, 1, 100);
 // 4. far itu mengatur seberapa jauh yang dapat di lihat kamera;
 
 var renderer = new THREE.WebGLRenderer();
-var box = new THREE.BoxGeometry(1, 1, 1);
-var boxmat = new THREE.MeshBasicMaterial({ color: 0xff0000 })
-var boxMesh = new THREE.Mesh(box, boxmat)
-scene.add(boxMesh);
+
+// const geometry = new THREE.SphereGeometry(1, 12, 6);
+// const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+// const capsule = new THREE.Mesh(geometry, material);
+
+const geo_saya = new THREE.BufferGeometry();
+
+scene.add(capsule);
+
 cam.position.z = 5;
 
 
@@ -26,7 +31,7 @@ window.addEventListener("resize", () => {
 
 function draw() {
     requestAnimationFrame(draw)
-    boxMesh.rotation.y += 0.01;
+    capsule.rotation.y += 0.01;
     renderer.render(scene, cam);
 }
 draw()
